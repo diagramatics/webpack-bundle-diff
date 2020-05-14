@@ -30,7 +30,8 @@ export function processModule(
     // Precalculate named chunk groups since they are the same for all submodules
     const namedChunkGroups = ncgLookup.getNamedChunkGroups(module.chunks);
 
-    if (!module.modules) {
+
+    if (!module.modules || module.modules.length === 0) {
         // This is just an individual module, so we can add it to the graph as-is
         addModuleToGraph(graph, {
             name: module.name,

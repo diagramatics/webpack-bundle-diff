@@ -9,7 +9,7 @@ export default class ModuleIdToNameMap {
         this.map = new Map();
         for (let module of stats.modules) {
             // If the module contains multiple hoisted modules, assume the first one is the primary module
-            let name = module.modules ? module.modules[0].name : module.name;
+            let name = module.modules && module.modules.length > 0 ? module.modules[0].name : module.name;
             this.map.set(module.id, name);
         }
     }
